@@ -5,16 +5,29 @@
 }
 
 #producto{
+    position: relative;
     display: flex;
-    height: 190pt;
+    height: 300pt;
     width: 190pt;
-    padding: 10px;
     background-color: #f3f3f3;
     transition: all 300ms ease;
     cursor: pointer;
     border-radius: 10px;
     margin-right: 15px;
     margin-bottom: 15px;
+}
+
+#imagen{
+    position: absolute;
+    display: flex;
+    height: 190pt;
+    width: 190pt;
+    top: 0;
+}
+
+#descripcion{
+    position: absolute;
+    bottom: 0;
 }
 
 #producto:hover{
