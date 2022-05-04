@@ -9,7 +9,7 @@
     display: flex;
     height: 300pt;
     width: 190pt;
-    background-color: #f3f3f3;
+    background-color: white;
     transition: all 300ms ease;
     cursor: pointer;
     border-radius: 10px;
@@ -33,5 +33,37 @@
 #producto:hover{
     background-color: rgb(20, 18, 18, 0.3);
     transition: all 300ms ease;
+}
+
+body {
+    background-color: rgb(240, 242, 245);
+}
+
+#titulo h1 {
+    cursor: pointer;
+    font-weight: bold;
+}
+#titulo svg{
+    cursor: pointer;
+}
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+.form {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    /* box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2); */
+    width: 450px;
+}
+header{
+    background-color: white;
+}
+#contTable{
+    background-color: white;
+    border-radius: 5px;
 }
 
