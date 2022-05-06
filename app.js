@@ -34,20 +34,30 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use((req, res, next) => {
-//     app.locals.user = req.user;
-//     console.log(app.locals)
-//     next();
-//   });
+app.use((req, res, next) => {
+    app.locals.user = req.user;
+    console.log(app.locals)
+    next();
+  });
 
 
-passport.use(new PassportLocal((correoasdf, password, done) => {
-   
-            if(correo === "alberto" && password === "12345"){
-                return done(null, {id: 1, name: "alberto"})
+passport.use(new PassportLocal((username, password, done) => {
+        conexion.query('select * from usuarios where correo = ? and contra = ?',[username, password], (error, results) => {
+        try {
+            
+            console.log(results[0].correo, results[0].contra)
+            
+            if(username === results[0].correo && password === results[0].contra){
+                return done(null, {id:results[0].id_usuario, name:results[0].name})
             }else{
                 done(null, false);
+            
             }
+        } catch (error) {
+            console.log(error, 'Usuario o contrase;a inconrrecto');
+        }
+
+    });
     
 }));
 
@@ -57,7 +67,11 @@ passport.serializeUser((user, done) => {
 
 //deserializacion 
 passport.deserializeUser((id, done) => {
-        done(null, {id, name: "alberto"});
+    conexion.query('select * from usuarios where id_usuario = ?', [id], (error, results) => {
+        if(error) throw error;
+        done(null, {id:results[0].id_usuario, name:results[0].nombre});
+        console.log(results[0].id_usuario);
+    });
 })
 
 app.get('/', (req, res, next)=>{
@@ -73,7 +87,7 @@ app.post('/', passport.authenticate('local',{
     successRedirect: '/home',
     failureRedirect: '/',
     passReqToCallback: true
-    }));
+}));
 
 // fin de session
 
@@ -107,9 +121,9 @@ app.get('/home', (req, res) => {
 
 app.get('/home/add/:id', (req, res) => {
     const id = req.params.id;
-
+    const idUser = req.user.id;
     conexion.query('insert into wishlist set ?', {
-        id_usuario: 1, 
+        id_usuario: idUser, 
         id_producto: id}, (error, results) => {
         if (error) throw error;
         res.redirect('/wishlist');
@@ -117,8 +131,7 @@ app.get('/home/add/:id', (req, res) => {
 });
 
 app.get('/wishlist', (req, res) => {
-    // const id = req.user.id;
-    const id = 1;
+    const id = req.user.id;
     // Esta consulta es la clave bob toral
     conexion.query('SELECT * from productos JOIN wishlist on wishlist.id_producto = productos.id_producto WHERE wishlist.id_usuario = ?', [id], (error, productos) => {
         if (error) throw error;
@@ -134,9 +147,7 @@ app.get('/home/delete/:id', (req, res) => {
     });
     console.log('Hola desde el delete', id);
 });
-
-
-
+// comentario manzana con pera verde
 
 app.listen(port, () => {
     console.log(`Listen on port http://localhost:${port}`);
