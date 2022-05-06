@@ -25,7 +25,7 @@ app.use(express(json))
 app.use(express.static('public'));
 
 
-// configuramos para la session
+// configuramos para la sesion
 app.use(cookieParser('secreto12'));
 app.use(session({
     secret: 'secreto12',
@@ -48,7 +48,7 @@ passport.use(new PassportLocal((username, password, done) => {
             console.log(results[0].correo, results[0].contra)
             
             if(username === results[0].correo && password === results[0].contra){
-                return done(null, {id:results[0].id_usuario, name:results[0].name})
+                return done(null, {id:results[0].id_usuario, name:results[0].correo}) //tenía name
             }else{
                 done(null, false);
             
@@ -69,7 +69,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
     conexion.query('select * from usuarios where id_usuario = ?', [id], (error, results) => {
         if(error) throw error;
-        done(null, {id:results[0].id_usuario, name:results[0].nombre});
+        done(null, {id:results[0].id_usuario, name:results[0].correo}); //tenía nombre
         console.log(results[0].id_usuario);
     });
 })
