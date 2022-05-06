@@ -119,6 +119,7 @@ app.get('/home/add/:id', (req, res) => {
 app.get('/wishlist', (req, res) => {
     // const id = req.user.id;
     const id = 1;
+    // Esta consulta es la clave bob toral
     conexion.query('SELECT * from productos JOIN wishlist on wishlist.id_producto = productos.id_producto WHERE wishlist.id_usuario = ?', [id], (error, productos) => {
         if (error) throw error;
         res.render('wishlist', {productos});
