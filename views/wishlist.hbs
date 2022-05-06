@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="Css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 
     <title>Wish List</title>
   </head>
@@ -22,10 +22,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="wishlist.html">Wish List</a>
+              <a class="nav-link" href="/wishlist">Wish List</a>
             </li>
             
             <li class="nav-item">
@@ -44,18 +44,23 @@
       <div class="mb-4" id="titulo">
         <h1>Mi lista de deseos</h1>
       </div>
+      <section class="d-flex" id="productos">
+      {{#each productos}}
 
-      <div id="producto">
-        <div id="imagen">
-          <img src="Img/google.png" alt="">
+        <div id="producto">
+          <div id="imagen">
+            <img src="{{imagen}}" alt=""> 
+          </div>
+
+          <div id="descripcion" class="p-2">
+            <h2>{{nombre}}</h2>
+            <button class="btn btn-success w-100 mb-2" type="button">Comprar ahora</button>
+            <a href="/home/delete/{{id_producto}}" class="btn btn-danger w-100">Eliminar mi Wish List</a>
+          </div>
         </div>
 
-        <div id="descripcion" class="p-2">
-          <h2>Producto</h2>
-          <button class="btn btn-success w-100 mb-2" type="button">Comprar ahora</button>
-          <button class="btn btn-danger w-100" type="button">Eliminar de mi Wish List</button>
-        </div>
-      </div>
+      {{/each}}  
+      </section>
       
     </div>
 
