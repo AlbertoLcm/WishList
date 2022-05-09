@@ -9,8 +9,8 @@ const conexion = mysql.createConnection({
 
 conexion.connect((err) => {
     if(err){
-        throw err;
-        return;
+        console.warn('\n\nAlgo ha salido mal con la BD :c\n\n');
+        throw err
     }
     console.log('Conexion perfecta');
 

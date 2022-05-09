@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    text-decoration: none;
 }
 
 #producto{
@@ -26,6 +27,7 @@
 }
 
 #descripcion{
+    text-decoration: none;
     position: absolute;
     bottom: 0;
 }
@@ -33,6 +35,33 @@
 #producto:hover{
     background-color: rgb(20, 18, 18, 0.3);
     transition: all 300ms ease;
+}
+
+#productoAll{
+    position: relative;
+    display: flex;
+    height: 300pt;
+    width: 70%;
+    background-color: #f3f3f3;
+    transition: all 300ms ease;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+#imagenAll{
+    position: absolute;
+    left: 0;
+    display: flex;
+    height: 300pt;
+    width: 300pt;
+}
+
+#descripcionAll{
+    position: absolute;
+    right: 0;
+    width: 260pt;
 }
 
 

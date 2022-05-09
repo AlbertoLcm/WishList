@@ -6,12 +6,10 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const PassportLocal = require('passport-local').Strategy;
 
-
 const app = express();
 const port = 8080;
 
 const conexion = require('./database/db.js');
-
 
 //handlebars
 app.set('view engine', 'hbs');
@@ -49,12 +47,12 @@ passport.use(new PassportLocal((username, password, done) => {
             
             if(username === results[0].correo && password === results[0].contra){
                 return done(null, {id:results[0].id_usuario, name:results[0].correo}) //tenía name
-            }else{
+            }else{  
                 done(null, false);
             
             }
         } catch (error) {
-            console.log(error, 'Usuario o contrase;a inconrrecto');
+            console.log('Usuario o contraseña inconrrecto');
         }
 
     });
@@ -116,6 +114,14 @@ app.get('/home', (req, res) => {
     conexion.query('select * from productos', (error, productos) => {
 
         res.render('home', {productos});
+    })
+});
+
+app.get('/home/:id', (req, res) => {
+    const id = req.params.id;
+    conexion.query('select * from productos where id_producto = ?',[id], (error, producto) => {
+        res.render('producto', {producto});
+        console.log(producto)
     })
 });
 

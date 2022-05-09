@@ -22,14 +22,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/wishlist">Wish List</a>
+                <a class="nav-link" href="wishlist.html">Wish List</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Cerrar sesión</a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
@@ -44,29 +42,31 @@
     
     <div class="container p-4">
       <div class="mb-4" id="titulo">
-        <h3>Sesión: {{user.name}}</h3>
         <h1>Productos electrónicos</h1>
       </div>
 
       <section class="d-flex" id="productos">
 
-      {{#each productos}}
-
-      <a href="home/{{id_producto}}">
-        <div id="producto">
-          <div id="imagen">
-            <img src="{{imagen}}" alt=""> 
+        
+        <div id="productoAll">
+          <div id="imagenAll">
+            <img src="../Img/google.png" alt="">
           </div>
 
-          <div id="descripcion" class="p-2">
-            <h2>{{nombre}}</h2>
+          <div id="descripcionAll" class="p-2">
+            <h2>Producto</h2>
+            <h4>Descripción:</h4>
+            <p>
+                Esta es la descripcion de mi producto
+                que proviene de una manzana, que es de color
+                morada, muy fantasticas por cierto
+            </p>
+            <h4>Precio</h4>
             <button class="btn btn-success w-100 mb-2" type="button">Comprar ahora</button>
-            <a href="/home/add/{{id_producto}}" class="btn btn-primary w-100">Añadir a mi Wish List</a>
+            <button class="btn btn-primary w-100" type="button">Añadir a mi Wish List</button>
           </div>
         </div>
-      </a>
 
-      {{/each}}  
       </section>
     </div>
 
