@@ -1,3 +1,17 @@
+#opciones{
+    margin-bottom: 20px;
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+}
+#opciones a{
+    background-color: #f3f3f3;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 10px;
+    color: #3f3f3f;
+}
+
 #productos{
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +32,11 @@
     margin-bottom: 15px;
 }
 
+#productos a{
+    text-decoration: none;
+    color: #3f3f3f;
+}
+
 #imagen{
     position: absolute;
     display: flex;
@@ -27,9 +46,11 @@
 }
 
 #descripcion{
-    text-decoration: none;
     position: absolute;
     bottom: 0;
+}
+#descripcion #a1{
+    color: #f3f3f3;
 }
 
 #producto:hover{
@@ -62,6 +83,9 @@
     position: absolute;
     right: 0;
     width: 260pt;
+}
+#descripcionAll #a1{
+    color: #f3f3f3;
 }
 
 
