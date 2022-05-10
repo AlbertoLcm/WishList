@@ -103,6 +103,17 @@ app.post('/registrar', (req, res) => {
     });
 });
 
+app.post('/editar', (req, res) => {
+    const {correo, password} = req.body;
+
+    conexion.query('update usuarios set ? where correo = ?', [{
+        contra: password},
+        correo], (error, results) => {
+        if (error) throw error;
+        res.redirect('/');
+    });
+});
+
 app.get('/logout', (req, res, next) => {
     req.logout();
     res.redirect('/');

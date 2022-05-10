@@ -12,6 +12,13 @@
     color: #3f3f3f;
 }
 
+#recuperar{
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
 #productos{
     display: flex;
     flex-wrap: wrap;
